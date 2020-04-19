@@ -63,7 +63,8 @@ public class MainActivity extends AppCompatActivity {
                 findViewById(R.id.buttonPlus),
                 findViewById(R.id.buttonMinus),
                 findViewById(R.id.buttonMultiply),
-                findViewById(R.id.buttonDivide)
+                findViewById(R.id.buttonDivide),
+                findViewById(R.id.buttonMOD)
         }; // for holding = + - * and /
 
         View.OnClickListener listener = new View.OnClickListener() { //for numbers
@@ -93,6 +94,11 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     Double number = Double.valueOf(value);
                     performOperation(op,number);
+                    if((secondOperand!=null)&&(op.equals("MOD"))){
+                        firstOperand = secondOperand = null;
+                        newNumberStore.setText("");
+                        result.setText("");
+                    }
                 } catch (NumberFormatException e){
                     newNumberStore.setText("");
                 }
@@ -137,6 +143,9 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case "-":
                     firstOperand-=secondOperand;
+                    break;
+                case "MOD":
+                    firstOperand%=secondOperand;
                     break;
             }
         }
