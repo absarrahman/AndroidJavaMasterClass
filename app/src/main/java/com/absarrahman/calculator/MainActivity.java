@@ -113,6 +113,16 @@ public class MainActivity extends AppCompatActivity {
             button.setOnClickListener(operationListener);
         }
 
+        View.OnClickListener clearValueListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clear();
+            }
+        };
+
+        Button clear = findViewById(R.id.buttonAC);
+        clear.setOnClickListener(clearValueListener);
+
     }
 
     private void performOperation(String operation,Double value){
@@ -171,5 +181,12 @@ public class MainActivity extends AppCompatActivity {
         pendingOperation = savedInstanceState.getString(STATE_PENDING_OPERATION);
         firstOperand = savedInstanceState.getDouble(STATE_OPERAND1);
         operationView.setText(savedInstanceState.getString(STATE_OPERATION_VIEW));
+    }
+
+    private void clear(){
+        firstOperand = secondOperand = null;
+        result.setText("");
+        newNumberStore.setText("");
+        operationView.setText("");
     }
 }
