@@ -54,7 +54,8 @@ public class MainActivity extends AppCompatActivity {
                 findViewById(R.id.button7),
                 findViewById(R.id.button8),
                 findViewById(R.id.button9),
-                findViewById(R.id.buttonDot)
+                findViewById(R.id.buttonDot),
+                findViewById(R.id.buttonNEG)
         }; //holds digits from button 0-9 and dot
 
         final Button operationHolder[] = {
@@ -69,7 +70,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Button b = (Button) v;
-                newNumberStore.append(b.getText().toString());
+                if((b.getText().toString().equals("NEG"))) {
+                    newNumberStore.append("-");
+                } else {
+                    newNumberStore.append(b.getText().toString());
+                }
             }
         };
 
